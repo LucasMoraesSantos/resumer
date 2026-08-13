@@ -27,6 +27,7 @@ async function requestSummary(system: string, input: string): Promise<string> {
     instructions: system,
     input,
     temperature: 0.2,
+    max_output_tokens: 180,
   });
   if (!response.output_text.trim()) throw new Error("OpenAI returned empty output");
   return response.output_text;
