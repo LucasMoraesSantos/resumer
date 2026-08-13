@@ -50,7 +50,9 @@ npm start
 
 O repositório inclui `netlify.toml` com o comando de build, diretório de publicação `.next` e versão do Node necessários. Ao importar o repositório na Netlify, mantenha a **Base directory** vazia e não substitua o **Publish directory** nas configurações do painel. Configurações definidas no painel têm precedência e um diretório como `out`, `public` ou a raiz do projeto resultará em uma página 404.
 
-Cadastre `OPENAI_API_KEY` e `OPENAI_MODEL` em **Project configuration → Environment variables** e faça um novo deploy. A aplicação não deve ser configurada como exportação estática, pois `/api/summarize` precisa executar no servidor. O `netlify.toml` fixa a versão moderna do Next.js Runtime (`@netlify/plugin-nextjs` v5), baseada em OpenNext, para garantir que a rota server-side seja publicada mesmo em sites existentes nos quais a integração automática não esteja habilitada.
+Cadastre `OPENAI_API_KEY` e `OPENAI_MODEL` em **Project configuration → Environment variables** e faça um novo deploy. Disponibilize ambas as variáveis nos contextos **Production**, **Deploy Previews** e **Branch deploys** quando esses endereços forem usados para testar a aplicação; variáveis limitadas a Production não são injetadas nas funções dos previews. Depois de alterar os contextos, execute um novo deploy, pois funções já publicadas não recebem retroativamente a nova configuração.
+
+A aplicação não deve ser configurada como exportação estática, pois `/api/summarize` precisa executar no servidor. O `netlify.toml` fixa a versão moderna do Next.js Runtime (`@netlify/plugin-nextjs` v5), baseada em OpenNext, para garantir que a rota server-side seja publicada mesmo em sites existentes nos quais a integração automática não esteja habilitada.
 
 ## Qualidade
 

@@ -4,7 +4,10 @@ import { summarizeConversation } from "@/lib/summarizer";
 export const runtime = "nodejs";
 const MAX_INPUT_CHARS = 500_000;
 
-function publicError(error: unknown): { message: string; status: number } {
+export function publicError(error: unknown): { message: string; status: number } {
+  if (error instanceof Error && error.message.endsWith("is not configured")) {
+    return { message: "O serviço de resumo não está configurado neste ambiente de deploy.", status: 503 };
+  }
   if (error instanceof Error && error.name === "AbortError") {
     return { message: "A geração demorou mais que o esperado. Tente novamente.", status: 504 };
   }
