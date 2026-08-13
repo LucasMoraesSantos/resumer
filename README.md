@@ -12,7 +12,7 @@ Aplicação web focada no fluxo **colar conversa → gerar resumo → copiar res
 
 ## Requisitos
 
-- Node.js 20.9 ou superior
+- Node.js 22.12 ou superior
 - Uma chave de API da OpenAI
 
 ## Instalação
@@ -45,6 +45,12 @@ Acesse [http://localhost:3000](http://localhost:3000). Para gerar e executar a v
 npm run build
 npm start
 ```
+
+## Deploy na Netlify
+
+O repositório inclui `netlify.toml` com o comando de build, diretório de publicação `.next` e versão do Node necessários. Ao importar o repositório na Netlify, mantenha a **Base directory** vazia e não substitua o **Publish directory** nas configurações do painel. Configurações definidas no painel têm precedência e um diretório como `out`, `public` ou a raiz do projeto resultará em uma página 404.
+
+Cadastre `OPENAI_API_KEY` e `OPENAI_MODEL` em **Project configuration → Environment variables** e faça um novo deploy. A aplicação não deve ser configurada como exportação estática, pois `/api/summarize` precisa executar no servidor. A integração moderna da Netlify detecta o Next.js durante o build e aplica automaticamente o adaptador OpenNext; não adicione o plugin legado `@netlify/plugin-nextjs`.
 
 ## Qualidade
 
