@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Pin the maintained Next.js Runtime so OpenNext is applied even when automatic
+# framework integration is not enabled for an existing Netlify site.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
