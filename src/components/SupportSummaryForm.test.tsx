@@ -24,11 +24,11 @@ describe("SupportSummaryForm", () => {
     expect(writeText).toHaveBeenCalledWith("Cliente confirmou normalização.");
     expect(screen.getByRole("button", { name: "Resumo copiado" })).toBeInTheDocument();
   });
-  it("shows the standard error when the API fails", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
+  it("shows the API error when the request fails", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, json: async () => ({ error: "Serviço temporariamente indisponível." }) }));
     render(<SupportSummaryForm />);
     fireEvent.change(screen.getByLabelText("Conversa do atendimento"), { target: { value: "Conversa fictícia" } });
     fireEvent.click(screen.getByRole("button", { name: "Gerar resumo" }));
-    await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent("Não foi possível gerar o resumo. Tente novamente."));
+    await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent("Serviço temporariamente indisponível."));
   });
 });
