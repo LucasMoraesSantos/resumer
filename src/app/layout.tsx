@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Resumo de Atendimento",
+  title: "RESUMER",
   description: "Gere registros objetivos a partir de conversas de suporte.",
 };
 
