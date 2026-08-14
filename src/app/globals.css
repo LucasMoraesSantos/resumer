@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(20, 184, 166, 0.14), transparent 36rem),
+    #020617;
+  color: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, textarea { font: inherit; }
+textarea { scrollbar-color: #475569 transparent; }
