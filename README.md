@@ -1,6 +1,6 @@
 # Resumo de Atendimento
 
-Extensão Chrome Manifest V3 que transforma uma conversa em um parágrafo curto e objetivo usando a API da OpenAI. O prompt proíbe listas e emojis, omite completamente a atendente virtual Clara e preserva os nomes dos atendentes humanos nas transferências. O departamento inicial pode ser informado antes de gerar o resumo.
+Extensão Chrome Manifest V3 que transforma uma conversa completa em um parágrafo de até 80 palavras usando a API da OpenAI. O prompt proíbe listas e emojis, omite completamente a atendente virtual Clara, preserva os nomes dos atendentes humanos nas transferências e deduz o departamento inicial quando ele estiver claro na transcrição.
 
 ## Instalação
 
