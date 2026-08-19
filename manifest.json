@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Resumo de Atendimento",
+  "version": "1.0.0",
+  "description": "Cria resumos curtos e objetivos de atendimentos com a OpenAI.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://api.openai.com/*"],
+  "action": {
+    "default_title": "Resumir atendimento",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}

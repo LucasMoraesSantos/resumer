@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resumo de Atendimento</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <div class="brand-mark" aria-hidden="true">R</div>
+        <div><p class="eyebrow">Assistente de registro</p><h1>Resumo de Atendimento</h1></div>
+        <button id="settings" class="icon-button" aria-label="Abrir configurações" title="Configurações">Ajustes</button>
+      </header>
+
+      <section>
+        <div class="label-row"><label for="transcript">Conversa</label><span id="counter">0 caracteres</span></div>
+        <textarea id="transcript" placeholder="Cole aqui a conversa completa do atendimento..." autofocus></textarea>
+        <button id="capture" class="secondary">Usar texto selecionado na página</button>
+      </section>
+
+      <button id="summarize" class="primary">Gerar resumo</button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="resultArea" class="result hidden">
+        <div class="label-row"><label for="result">Resumo</label><button id="copy" class="text-button">Copiar</button></div>
+        <textarea id="result" readonly></textarea>
+      </section>
+    </main>
+    <script src="lib.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
