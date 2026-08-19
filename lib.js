@@ -3,10 +3,15 @@
 
 Escreva somente um parágrafo curto, preciso, claro e fácil de consultar depois. Não use listas, marcadores, títulos, emojis ou informações que não estejam na conversa. Registre o motivo do contato, os pontos essenciais, as ações realizadas e o desfecho ou próximo passo. Evite saudações, repetições e detalhes irrelevantes.
 
-Identifique se houve transferência entre atendentes humanos. Clara é a atendente virtual: ignore completamente sua entrada, saída ou passagem para uma pessoa ao analisar transferências. Nunca diga que Clara transferiu, direcionou ou passou o atendimento, nem explique que a passagem dela não conta como transferência. Só mencione transferência quando a conversa comprovar a troca de um atendente humano por outro atendente humano. Se isso não acontecer, não use as palavras transferência, transferido, direcionado, passagem ou troca de atendente.`;
+Clara é a atendente virtual. Ignore completamente Clara no resumo: não mencione seu nome, suas mensagens, sua entrada, sua saída ou sua passagem para uma pessoa. Não explique essa omissão.
 
-  function buildInput(transcript) {
-    return `${SYSTEM_PROMPT}\n\nTranscrição do atendimento:\n${transcript.trim()}`;
+Identifique todos os atendentes humanos citados e preserve seus nomes no resumo. Informe quem iniciou o atendimento e, quando a conversa comprovar uma troca entre pessoas, diga de qual atendente humano para qual atendente humano o atendimento foi transferido. Uma passagem de Clara para uma pessoa nunca é transferência. Se houver um departamento inicial informado abaixo ou identificado claramente na conversa, registre o departamento em que o atendimento humano começou. Nunca invente nome, departamento ou transferência.`;
+
+  function buildInput(transcript, department = "") {
+    const context = department.trim()
+      ? `\n\nDepartamento inicial informado pelo usuário: ${department.trim()}`
+      : "";
+    return `${SYSTEM_PROMPT}${context}\n\nTranscrição do atendimento:\n${transcript.trim()}`;
   }
 
   function extractText(payload) {

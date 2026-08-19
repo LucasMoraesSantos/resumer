@@ -5,6 +5,7 @@ const resultArea = document.querySelector("#resultArea");
 const result = document.querySelector("#result");
 const counter = document.querySelector("#counter");
 const themeButton = document.querySelector("#theme");
+const department = document.querySelector("#department");
 
 chrome.storage.local.get("theme").then(({ theme = "light" }) => {
   document.documentElement.dataset.theme = theme;
@@ -46,7 +47,7 @@ summarizeButton.addEventListener("click", async () => {
     const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ model, input: Resumer.buildInput(transcript.value), max_output_tokens: 220 })
+      body: JSON.stringify({ model, input: Resumer.buildInput(transcript.value, department.value), max_output_tokens: 220 })
     });
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error?.message || "Não foi possível gerar o resumo.");
