@@ -6,6 +6,8 @@ test("prompt exige parágrafo sem listas e trata Clara como virtual", () => {
   assert.match(SYSTEM_PROMPT, /somente um parágrafo curto/);
   assert.match(SYSTEM_PROMPT, /Não use listas/);
   assert.match(SYSTEM_PROMPT, /Clara é a atendente virtual/);
+  assert.match(SYSTEM_PROMPT, /Nunca diga que Clara transferiu/);
+  assert.match(SYSTEM_PROMPT, /não use as palavras transferência/);
   assert.match(SYSTEM_PROMPT, /humano por outro atendente humano/);
 });
 

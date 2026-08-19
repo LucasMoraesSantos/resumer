@@ -9,14 +9,17 @@
   <body>
     <main class="app">
       <header>
-        <div class="brand-mark" aria-hidden="true">R</div>
-        <div><p class="eyebrow">Assistente de registro</p><h1>Resumo de Atendimento</h1></div>
-        <button id="settings" class="icon-button" aria-label="Abrir configurações" title="Configurações">Ajustes</button>
+        <div class="brand-mark" aria-hidden="true"><span></span></div>
+        <div class="brand-copy"><p class="eyebrow">Assistente de registro</p><h1>Resumo de atendimento</h1></div>
+        <div class="header-actions">
+          <button id="theme" class="icon-button theme-button" aria-label="Alternar tema" title="Alternar tema"><span class="theme-icon" aria-hidden="true"></span></button>
+          <button id="settings" class="icon-button" aria-label="Abrir configurações" title="Configurações">Ajustes</button>
+        </div>
       </header>
 
       <section>
         <div class="label-row"><label for="transcript">Conversa</label><span id="counter">0 caracteres</span></div>
-        <textarea id="transcript" placeholder="Cole aqui a conversa completa do atendimento..." autofocus></textarea>
+        <textarea id="transcript" placeholder="Cole aqui a conversa completa do atendimento..." autofocus spellcheck="false"></textarea>
         <button id="capture" class="secondary">Usar texto selecionado na página</button>
       </section>
 
@@ -25,7 +28,7 @@
 
       <section id="resultArea" class="result hidden">
         <div class="label-row"><label for="result">Resumo</label><button id="copy" class="text-button">Copiar</button></div>
-        <textarea id="result" readonly></textarea>
+        <textarea id="result" readonly spellcheck="false"></textarea>
       </section>
     </main>
     <script src="lib.js"></script>

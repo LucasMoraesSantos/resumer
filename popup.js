@@ -4,6 +4,19 @@ const status = document.querySelector("#status");
 const resultArea = document.querySelector("#resultArea");
 const result = document.querySelector("#result");
 const counter = document.querySelector("#counter");
+const themeButton = document.querySelector("#theme");
+
+chrome.storage.local.get("theme").then(({ theme = "light" }) => {
+  document.documentElement.dataset.theme = theme;
+  themeButton.setAttribute("aria-label", theme === "dark" ? "Usar tema claro" : "Usar tema escuro");
+});
+
+themeButton.addEventListener("click", async () => {
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = theme;
+  themeButton.setAttribute("aria-label", theme === "dark" ? "Usar tema claro" : "Usar tema escuro");
+  await chrome.storage.local.set({ theme });
+});
 
 transcript.addEventListener("input", () => { counter.textContent = `${transcript.value.length} caracteres`; });
 document.querySelector("#settings").addEventListener("click", () => chrome.runtime.openOptionsPage());
